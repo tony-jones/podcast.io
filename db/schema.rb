@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160407065752) do
+ActiveRecord::Schema.define(version: 20160409024022) do
+
+  create_table "episodes", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "podcast_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "episodes", ["podcast_id"], name: "index_episodes_on_podcast_id"
 
   create_table "podcasts", force: true do |t|
     t.string   "email",                  default: "", null: false
