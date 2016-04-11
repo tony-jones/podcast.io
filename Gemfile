@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'devise', '~> 3.5', '>= 3.5.6'
+gem 'paperclip', '~> 4.3', '>= 4.3.6'
 
 group :doc do
   gem 'sdoc', require: false

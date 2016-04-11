@@ -1,8 +1,9 @@
 class EpisodesController < ApplicationController
-  before_action :find_podcast
+  before_action :authenticate_podcast!, except: [:show]
   before_filter :require_permission
+  before_action :find_podcast
   before_action :find_episode, only: [:show, :edit, :update, :destroy ]
-  before_action :authenticate!, except: [:show]
+
 
   def new
     @episode = @podcast.episodes.new
@@ -40,7 +41,7 @@ class EpisodesController < ApplicationController
   private
 
   def episode_params
-    params.require(:episode).permit(:title, :description)
+    params.require(:episode).permit(:title, :description, :episode_thumbnail)
   end
 
   def find_podcast
@@ -53,7 +54,7 @@ class EpisodesController < ApplicationController
 
   def require_permission
     @podcast = Podcast.find(params[:podcast_id])
-    if current_podcast != @Podcast
+    if current_podcast != @podcast
       redirect_to root_path, notice: "Sorry, your not allowed to view that page"
     end
   end
