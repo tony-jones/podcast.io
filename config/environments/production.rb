@@ -78,7 +78,7 @@ PodcastFm::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-  # config/environments/production.rb
+  # Sets paperclip to Upload to Amazon s3 by default
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_credentials => {
